@@ -17,34 +17,34 @@ python setup.py install
 
 ## Preparing Datasets
 ### PASCAL VOC2012
-### MS COCO2014
+### MS COCO2017
 ### Preparing pre-trained model
 Download CLIP pre-trained [ViT-B/16] at and put it to /your_home_dir/pretrained_models/clip.
 
 ## Run Experiments
 ### Step 1. Perturbation-based CLIP Similarity (PCS)
-For VOC12
+For VOC
 
-CUDA_VISIBLE_DEVICES=0 python PCS_voc.py --img_root /your_home_dir/datasets/gen_voc/image --split_file ./voc12/train.txt --model /your_home_dir/pretrained_models/clip/ViT-B-16.pt --num_workers 1 --cam_out_dir ./output/voc12/cams
+`CUDA_VISIBLE_DEVICES=0 python PCS_voc.py --img_root /your_home_dir/datasets/gen_voc/image --split_file ./voc/train.txt --model /your_home_dir/pretrained_models/clip/ViT-B-16.pt --num_workers 1 --cam_out_dir ./output/voc/cams`
 
-For COCO14
+For COCO
 
-CUDA_VISIBLE_DEVICES=0 python PCS_coco14.py --img_root /your_home_dir/datasets/gen_coco/image --split_file ./coco14/train.txt --model /your_home_dir/pretrained_models/clip/ViT-B-16.pt --num_workers 1 --cam_out_dir ./output/coco14/cams
+`CUDA_VISIBLE_DEVICES=0 python PCS_coco.py --img_root /your_home_dir/datasets/gen_coco/image --split_file ./coco/train.txt --model /your_home_dir/pretrained_models/clip/ViT-B-16.pt --num_workers 1 --cam_out_dir ./output/coco/cams`
 
 
 ### Step 2. Generate Pesudo Annotation
-for VOC12 
+for VOC
 
-python generate_pesudo_annotation.py --cam_out_dir ./output/voc12/cams --gt_root /your_home_dir/datasets/gen_voc/mask --image_root /your_home_dir/datasets/gen_voc/image --split_file ./voc12/train.txt --pseudo_mask_save_path ./output/voc12/pseudo_annotation
+`python generate_pesudo_annotation.py --cam_out_dir ./output/voc/cams --gt_root /your_home_dir/datasets/gen_voc/mask --image_root /your_home_dir/datasets/gen_voc/image --split_file ./voc/train.txt --pseudo_mask_save_path ./output/voc/pseudo_annotation`
 
-for COCO14
+for COCO
 
-python generate_pesudo_annotation.py --cam_out_dir ./output/coco14/cams --gt_root /your_home_dir/datasets/gen_coco/mask --image_root /your_home_dir/datasets/gen_coco/image --split_file ./coco14/train.txt --pseudo_mask_save_path ./output/coco2014/pseudo_annotation
+`python generate_pesudo_annotation.py --cam_out_dir ./output/coco/cams --gt_root /your_home_dir/datasets/gen_coco/mask --image_root /your_home_dir/datasets/gen_coco/image --split_file ./coco/train.txt --pseudo_mask_save_path ./output/coco/pseudo_annotation`
 
 ### Step 3. Annotation Similarity Filter (ASF)
 with input the mask of gen_voc and gen_coco
 
-CUDA_VISIBLE_DEVICES=0 python ASF.py
+`CUDA_VISIBLE_DEVICES=0 python ASF.py`
 
 
 ### Step 4. Train Segmentation Model
