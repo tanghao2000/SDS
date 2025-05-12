@@ -25,11 +25,11 @@ Download CLIP pre-trained [ViT-B/16] at and put it to /your_home_dir/pretrained_
 ### Step 1. Perturbation-based CLIP Similarity (PCS)
 For VOC
 
-`CUDA_VISIBLE_DEVICES=0 python PCS_voc.py --img_root /your_home_dir/datasets/gen_voc/image --split_file ./voc/train.txt --model /your_home_dir/pretrained_models/clip/ViT-B-16.pt --num_workers 1 --cam_out_dir ./output/voc/cams`
+`python PCS_voc.py --img_root /your_home_dir/datasets/gen_voc/image --split_file ./voc/train.txt --model /your_home_dir/pretrained_models/clip/ViT-B-16.pt --num_workers 1 --cam_out_dir ./output/voc/cams`
 
 For COCO
 
-`CUDA_VISIBLE_DEVICES=0 python PCS_coco.py --img_root /your_home_dir/datasets/gen_coco/image --split_file ./coco/train.txt --model /your_home_dir/pretrained_models/clip/ViT-B-16.pt --num_workers 1 --cam_out_dir ./output/coco/cams`
+`python PCS_coco.py --img_root /your_home_dir/datasets/gen_coco/image --split_file ./coco/train.txt --model /your_home_dir/pretrained_models/clip/ViT-B-16.pt --num_workers 1 --cam_out_dir ./output/coco/cams`
 
 
 ### Step 2. Generate Pesudo Annotation
@@ -44,7 +44,7 @@ For COCO
 ### Step 3. Annotation Similarity Filter (ASF)
 With input the mask of gen_voc and gen_coco
 
-`CUDA_VISIBLE_DEVICES=0 python ASF.py`
+`python ASF.py`
 
 
 ### Step 4. Train Segmentation Model
