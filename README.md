@@ -33,16 +33,16 @@ For COCO
 
 
 ### Step 2. Generate Pesudo Annotation
-for VOC
+For VOC
 
 `python generate_pesudo_annotation.py --cam_out_dir ./output/voc/cams --gt_root /your_home_dir/datasets/gen_voc/mask --image_root /your_home_dir/datasets/gen_voc/image --split_file ./voc/train.txt --pseudo_mask_save_path ./output/voc/pseudo_annotation`
 
-for COCO
+For COCO
 
 `python generate_pesudo_annotation.py --cam_out_dir ./output/coco/cams --gt_root /your_home_dir/datasets/gen_coco/mask --image_root /your_home_dir/datasets/gen_coco/image --split_file ./coco/train.txt --pseudo_mask_save_path ./output/coco/pseudo_annotation`
 
 ### Step 3. Annotation Similarity Filter (ASF)
-with input the mask of gen_voc and gen_coco
+With input the mask of gen_voc and gen_coco
 
 `CUDA_VISIBLE_DEVICES=0 python ASF.py`
 
