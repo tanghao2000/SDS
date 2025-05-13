@@ -16,8 +16,8 @@
 `python setup.py install`
 
 ## Preparing Datasets
-### Synthetic PASCAL VOC2012
-### Synthetic MS COCO2017
+### Synthetic PASCAL VOC
+### Synthetic MS COCO
 ### Preparing pre-trained model
 Download CLIP pre-trained [ViT-B/16] at and put it to /your_home_dir/pretrained_models/clip.
 
