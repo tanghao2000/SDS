@@ -1,23 +1,23 @@
 # SDS
 ## Reqirements
 ### create conda env
-conda create -n SDS python=3.9
+`conda create -n SDS python=3.9`
 
 ### install packages
-pip install torch==1.7.1+cu101 torchvision==0.8.2+cu101
+`pip install torch==1.7.1+cu101 torchvision==0.8.2+cu101`
 
-pip install opencv-python ftfy regex tqdm ttach tensorboard lxml cython
+`pip install opencv-python ftfy regex tqdm ttach tensorboard lxml cython`
 
 ### install pydensecrf from source
-git clone https://github.com/lucasb-eyer/pydensecrf
+`git clone https://github.com/lucasb-eyer/pydensecrf`
 
-cd pydensecrf
+`cd pydensecrf`
 
-python setup.py install
+`python setup.py install`
 
 ## Preparing Datasets
-### PASCAL VOC2012
-### MS COCO2017
+### Synthetic PASCAL VOC2012
+### Synthetic MS COCO2017
 ### Preparing pre-trained model
 Download CLIP pre-trained [ViT-B/16] at and put it to /your_home_dir/pretrained_models/clip.
 
