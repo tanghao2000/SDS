@@ -49,3 +49,6 @@ With input the mask of gen_voc and gen_coco
 
 ### Step 4. Train Segmentation Model
 We select DeeplabV3, Mask2Former and CDL as the segmentation models.
+
+## Acknowledgement
+Our repo is built on CLIP-ES and Dataset-Diffusion. We thank the authors for sharing their codes.
