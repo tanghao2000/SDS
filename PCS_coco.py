@@ -185,7 +185,7 @@ def perform(process_id, dataset_list, args, model, bg_text_features, fg_text_fea
 
                 matched_pattern = re.findall(r'\d+', im)
                 extracted_numbers = ''.join(matched_pattern)
-                file_path = "./coc14/train_PCS.txt"
+                file_path = "./coco/train_PCS.txt"
                 if average_entropy < 5 and difference > 0.05:
                     with open(file_path, 'a', encoding='utf-8') as file:
                         file.write(extracted_numbers + '\n')
@@ -256,7 +256,7 @@ def perform(process_id, dataset_list, args, model, bg_text_features, fg_text_fea
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('--img_root', type=str, default='./gen_coco/image')
-    parser.add_argument('--split_file', type=str, default='./coco14/train.txt')
+    parser.add_argument('--split_file', type=str, default='./coco/train.txt')
     parser.add_argument('--cam_out_dir', type=str, default='./coco_cam/coco')
     parser.add_argument('--model', type=str, default='./ViT-B-16.pt')
     parser.add_argument('--num_workers', type=int, default=1)
