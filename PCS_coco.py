@@ -171,22 +171,22 @@ def perform(process_id, dataset_list, args, model, bg_text_features, fg_text_fea
                 softmax_logits_per_image = logits_per_image
                 probs_per_image = [softmax_logits_per_image[i].detach().cpu().numpy() for i in
                                    range(len(softmax_logits_per_image))]
-                entropy_per_image = [entropy(probs) for probs in probs_per_image]
-                average_entropy = np.mean(entropy_per_image)
+                similarity_per_image = [entropy(probs) for probs in probs_per_image]
+                average_similarity = np.mean(similarity_per_image)
 
                 mix_softmax_logits_per_image = mix_logits_per_image
                 mix_probs_per_image = [mix_softmax_logits_per_image[i].detach().cpu().numpy() for i in
                                        range(len(mix_softmax_logits_per_image))]
-                mix_entropy_per_image = [entropy(probs) for probs in mix_probs_per_image]
-                mix_average_entropy = np.mean(mix_entropy_per_image)
+                mix_similarity_per_image = [entropy(probs) for probs in mix_probs_per_image]
+                mix_average_similarity = np.mean(mix_similarity_per_image)
 
-                difference = abs(average_entropy - mix_average_entropy)
+                difference = abs(average_similarity - mix_average_similarity)
                 print(difference)
 
                 matched_pattern = re.findall(r'\d+', im)
                 extracted_numbers = ''.join(matched_pattern)
                 file_path = "./coco/train_PCS.txt"
-                if average_entropy < 1 and difference > 0.1:
+                if average_similarity < 1 and difference > 0.1:
                     with open(file_path, 'a', encoding='utf-8') as file:
                         file.write(extracted_numbers + '\n')
 
