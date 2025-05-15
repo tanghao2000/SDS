@@ -185,18 +185,18 @@ def perform(process_id, dataset_list, args, model, bg_text_features, fg_text_fea
                 softmax_logits_per_image = logits_per_image
                 probs_per_image = [softmax_logits_per_image[i].detach().cpu().numpy() for i in
                                    range(len(softmax_logits_per_image))]
-                entropy_per_image = [entropy(probs) for probs in probs_per_image]
-                average_entropy = np.mean(entropy_per_image)
-                print('shang:', average_entropy)
+                similarity_per_image = [entropy(probs) for probs in probs_per_image]
+                average_similarity = np.mean(similarity_per_image)
+                print('similarity:', average_similarity)
 
 
                 mix_softmax_logits_per_image = mix_logits_per_image
                 mix_probs_per_image = [mix_softmax_logits_per_image[i].detach().cpu().numpy() for i in
                                    range(len(mix_softmax_logits_per_image))]
-                mix_entropy_per_image = [entropy(probs) for probs in mix_probs_per_image]
-                mix_average_entropy = np.mean(mix_entropy_per_image)
+                mix_similarity_per_image = [entropy(probs) for probs in mix_probs_per_image]
+                mix_average_similarity = np.mean(mix_similarity_per_image)
 
-                difference = abs(average_entropy - mix_average_entropy)
+                difference = abs(average_similarity - mix_average_similarityy)
                 print('difference:', difference)
 
                 matched_pattern = re.findall(r'\d+_\d+_\d+', im)
