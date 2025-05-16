@@ -186,7 +186,7 @@ def perform(process_id, dataset_list, args, model, bg_text_features, fg_text_fea
                 matched_pattern = re.findall(r'\d+', im)
                 extracted_numbers = ''.join(matched_pattern)
                 file_path = "./coco/train_PCS.txt"
-                if average_similarity < 1 and difference > 0.1:
+                if difference > 0.1:
                     with open(file_path, 'a', encoding='utf-8') as file:
                         file.write(extracted_numbers + '\n')
 
